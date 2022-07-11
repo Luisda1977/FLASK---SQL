@@ -13,7 +13,7 @@ def inicio():
     Muestra la lista de movimientos cargados.
     """
     db = DBManager(RUTA)
-    movimientos = db.consultaSQL("SELECT * FROM movimientos")
+    movimientos = db.consultaSQL("SELECT id, fecha, concepto, tipo, cantidad FROM movimientos")
     return render_template("inicio.html", movs=movimientos)
 
 
