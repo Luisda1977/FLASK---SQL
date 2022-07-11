@@ -16,6 +16,6 @@ def actualizar():
     return "Actualizar movimiento"   
 
 
-app.route("/borrar", methods=["GET", "POST"])
+@app.route("/borrar", methods=["GET", "POST"])
 def eliminar():
     return "Eliminar movimiento"    
