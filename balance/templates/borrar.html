@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block head_title %}
+{{ super () }}: Borrado
+{% endblock %}
+
+{% block contenido %}
+{% if resultado %}
+<h1>Has eliminado el movimiento correctamente.</h1>
+{% else %}
+Ha ocurrido un error al borrar
+{% endif %}
+{% endblock %}
