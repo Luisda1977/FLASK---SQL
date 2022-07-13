@@ -1,5 +1,5 @@
-from asyncio import constants
 import sqlite3
+from unittest import result
 
 
 class DBManager:
@@ -60,4 +60,29 @@ class DBManager:
         except:
             conexion.rollback()
         conexion.close()
-        return resultado    
+        return resultado
+
+    def obtenerMovimientoPorId(self, id):
+        consulta = "SELECT * FROM movimientos WHERE id=?"
+        conexion = sqlite3.connect(self.ruta)
+        cursor = conexion.cursor()
+        cursor.execute(consulta, (id,))
+
+        datos = cursor.fetchone()
+        resultado = None
+
+        if datos:
+            nombres_columnas = []
+
+            for desc_columna in cursor.description:
+                nombres_columnas.append(desc_columna[0])
+
+            movimiento = {}
+            indice = 0
+            for nombre in nombres_columnas:
+                movimiento[nombre] = datos[indice]
+                indice += 1
+            resultado = movimiento
+
+        conexion.close()
+        return resultado
