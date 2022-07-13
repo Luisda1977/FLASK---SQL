@@ -33,9 +33,9 @@ def actualizar(id):
         print("ANTES:", movimiento["fecha"])
         movimiento["fecha"] = date.fromisoformat(movimiento["fecha"])
         print("DESPUÉS:", movimiento["fecha"])
-        
+
         formulario = MovimientosForm(data=movimiento)
-        return render_template("form_movimiento.html", form=formulario)   
+        return render_template("form_movimiento.html", form=formulario, id=id)
 
 
 @app.route("/borrar/<int:id>", methods=["GET", "POST"])
