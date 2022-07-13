@@ -41,12 +41,12 @@ def actualizar(id):
         form = MovimientosForm(data=request.form)
         if form.validate():
             db = DBManager(RUTA)
-            consulta = "UPDATE movimientos SET fecha=?, concepto=?, tipo=?, cantidad=? WHERE id=?"
+            consulta = "UPDATE movimientos SET cantidad=?, concepto=?, tipo=?, fecha=? WHERE id=?"
             params = (
-                form.fecha.data,
+                form.cantidad.data,
                 form.concepto.data,
                 form.tipo.data,
-                form.cantidad.data,
+                form.fecha.data,
                 form.id.data)
             resultado = db.consultaConParametros(consulta, params)
             if resultado:
