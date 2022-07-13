@@ -26,8 +26,10 @@ def nuevo():
 @app.route("/modificar/<int:id>", methods=["GET", "POST"])
 def actualizar(id):
     if request.method == "GET":
-        return render_template("form_movimiento.html")  
-    return f"Actualizar el movimiento con ID={id}"   
+        db = DBManager(RUTA)
+        movimiento = db.obtenerMovimientoPorId(id)
+        formulario = MovimientosForm(data=movimiento)
+        return render_template("form_movimiento.html", form=formulario)   
 
 
 @app.route("/borrar/<int:id>", methods=["GET", "POST"])

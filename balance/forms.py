@@ -1,13 +1,12 @@
-from random import choices
-from flask_wlf import Flaskform
-from wtform import Datefield, DecimalField, HiddenField, RadioField, StringField, Submitfield
+from flask_wtf import FlaskForm
+from wtforms import DateField, DecimalField, HiddenField, RadioField, StringField, SubmitField
 
 
-class MovimientosForm(Flaskform):
+class MovimientosForm(FlaskForm):
     id = HiddenField()
-    fecha = Datefield("Fecha")
+    fecha = DateField("Fecha")
     concepto = StringField("Concepto")
     tipo = RadioField(choices=[("I", "Ingreso"), ("G", "Gasto")])
     cantidad = DecimalField("Cantidad", places=2)
 
-    submit = Submitfield("Guardar")
+    submit = SubmitField("Guardar")
