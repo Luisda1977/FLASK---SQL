@@ -53,7 +53,7 @@ def actualizar(id):
                 flash("Movimiento actualizado correctamente ;)",
                       category="exito")
                 return redirect(url_for("inicio"))
-            return render_template("form_movimiento.html", form=form, id=id, errores=["Ha fallado la operación de guardar en la base de datos"])return "No se ha podido guardar en la base de datos"
+            return render_template("form_movimiento.html", form=form, id=id, errores=["Ha fallado la operación de guardar en la base de datos"])
         else:
             return render_template("form_movimiento.html", 
             form=form, id=id, errores=["Ha fallado la validación de los datos"])
